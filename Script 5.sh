@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Name: Ravi Kumar Gupta
+# Registration Number: 24BCE11274
 # Script 5: Open Source Manifest Generator
 
 echo "Answer a few questions..."
