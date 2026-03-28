@@ -1,22 +1,34 @@
 #!/bin/bash
 
 # Name: Ravi Kumar Gupta
-# Registration Number: 24BCE11274
-# Script: Disk and Permission Auditor
+# Script 3: Disk and Permission Auditor
 
-directories="/etc /var/log /home /usr/bin /tmp"
+echo ""
+echo "---- Disk and Permission Auditor ----"
+echo ""
 
-echo "---- Disk and Permission Audit ----"
+# Directories to check
+DIRS=("/etc" "/var/log" "/home" "/usr/bin" "/tmp")
 
-for dir in $directories
-do
-    echo ""
-    echo "Directory: $dir"
-
-    # Permissions and owner
-    ls -ld $dir
-
-    # Size of directory
-    size=$(du -sh $dir 2>/dev/null | cut -f1)
-    echo "Size: $size"
+for DIR in "${DIRS[@]}"; do
+    if [ -d "$DIR" ]; then
+        PERMS=$(ls -ld $DIR | awk '{print $1, $3, $4}')
+        SIZE=$(du -sh $DIR 2>/dev/null | cut -f1)
+        echo "$DIR => Permissions: $PERMS | Size: $SIZE"
+    else
+        echo "$DIR does not exist"
+    fi
 done
+
+echo ""
+
+# ✅ REQUIRED: Python config directory check
+echo "[Python Config Directory Check]"
+if [ -d "/etc/python3" ]; then
+    ls -ld /etc/python3
+else
+    echo "Config directory not found"
+fi
+
+echo ""
+echo "---- End ----"
