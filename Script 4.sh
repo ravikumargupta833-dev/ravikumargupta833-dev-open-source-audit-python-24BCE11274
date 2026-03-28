@@ -1,38 +1,41 @@
 #!/bin/bash
 
 # Name: Ravi Kumar Gupta
-# Registration Number: 24BCE11274
-# Script: Log File Analyzer
+# Script 4: Log File Analyzer
 
-logfile=$1
-keyword=${2:-error}
+LOGFILE=$1
+KEYWORD=${2:-error}
 
-if [ -z "$logfile" ]
-then
+# Check input
+if [ -z "$LOGFILE" ]; then
     echo "Usage: ./script4.sh <logfile> [keyword]"
     exit 1
 fi
 
-if [ ! -f "$logfile" ]
-then
+# Check file exists
+if [ ! -f "$LOGFILE" ]; then
     echo "File not found."
     exit 1
 fi
 
-count=0
+# ✅ REQUIRED: Check empty file
+if [ ! -s "$LOGFILE" ]; then
+    echo "Log file is empty."
+    exit 1
+fi
 
-# Reading file line by line
-while read line
-do
-    echo "$line" | grep -i "$keyword" >/dev/null
-    if [ $? -eq 0 ]
-    then
-        count=$((count+1))
+COUNT=0
+
+# Read line by line
+while read line; do
+    echo "$line" | grep -i "$KEYWORD" >/dev/null
+    if [ $? -eq 0 ]; then
+        COUNT=$((COUNT + 1))
     fi
-done < "$logfile"
+done < "$LOGFILE"
 
-echo "Total lines containing '$keyword': $count"
+echo "Total lines containing '$KEYWORD': $COUNT"
 
 echo ""
 echo "Last 5 matching lines:"
-grep -i "$keyword" "$logfile" | tail -n 5
+grep -i "$KEYWORD" "$LOGFILE" | tail -n 5
