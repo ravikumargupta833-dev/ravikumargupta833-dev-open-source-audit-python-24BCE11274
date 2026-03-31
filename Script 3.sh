@@ -1,5 +1,6 @@
 #!/bin/bash
 # Script 3: Disk and Permission Auditor
+# Name: Ravi Kumar Gupta
 # Reg No: 24BCE11274
 
 DIRS=("/etc" "/var/log" "/home" "/usr/bin" "/tmp")
