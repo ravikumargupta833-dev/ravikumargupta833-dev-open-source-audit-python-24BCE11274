@@ -1,31 +1,22 @@
 #!/bin/bash
-# Script 3: Disk and Permission Auditor
+
 # Name: Ravi Kumar Gupta
-# Reg No: 24BCE11274
+# Registration Number: 24BCE11274
+# Script: Disk and Permission Auditor
 
-DIRS=("/etc" "/var/log" "/home" "/usr/bin" "/tmp")
+directories="/etc /var/log /home /usr/bin /tmp"
 
-echo "Directory Audit Report"
-echo "--------------------------------"
+echo "---- Disk and Permission Audit ----"
 
-for DIR in "${DIRS[@]}"
+for dir in $directories
 do
-    if [ -d "$DIR" ]
-    then
-        PERMS=$(ls -ld $DIR | awk '{print $1, $3, $4}')
-        SIZE=$(du -sh $DIR 2>/dev/null | cut -f1)
-        echo "$DIR => Permissions: $PERMS | Size: $SIZE"
-    else
-        echo "$DIR does not exist"
-    fi
+    echo ""
+    echo "Directory: $dir"
+
+    # Permissions and owner
+    ls -ld $dir
+
+    # Size of directory
+    size=$(du -sh $dir 2>/dev/null | cut -f1)
+    echo "Size: $size"
 done
-
-echo ""
-echo "Checking Git config directory..."
-
-if [ -f "/etc/gitconfig" ]
-then
-    ls -l /etc/gitconfig
-else
-    echo "Git config file not found."
-fi
