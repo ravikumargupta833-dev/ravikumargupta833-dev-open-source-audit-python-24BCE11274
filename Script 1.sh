@@ -1,30 +1,24 @@
 #!/bin/bash
-# Script 1: System Identity Report
+
 # Name: Ravi Kumar Gupta
-# Reg No: 24BCE11274
+# Registration Number: 24BCE11274
+# Script: System Identity Report
 
-STUDENT_NAME="Ravi Kumar Gupta"
-REG_NO="24BCE11274"
-SOFTWARE="Git"
+# Collecting system details using command substitution
+distro=$(cat /etc/os-release | grep PRETTY_NAME | cut -d= -f2)
+kernel=$(uname -r)
+user=$(whoami)
+home_dir=$HOME
+uptime_info=$(uptime -p)
+current_time=$(date)
 
-KERNEL=$(uname -r)
-USER_NAME=$(whoami)
-UPTIME=$(uptime -p)
-DATE=$(date)
-DISTRO=$(cat /etc/os-release | grep PRETTY_NAME | cut -d= -f2 | tr -d '"')
-
-echo "========================================"
-echo " Open Source Audit"
-echo " Name: $STUDENT_NAME"
-echo " Reg No: $REG_NO"
-echo "========================================"
-
-echo "Distribution : $DISTRO"
-echo "Kernel       : $KERNEL"
-echo "User         : $USER_NAME"
-echo "Home Dir     : $HOME"
-echo "Uptime       : $UPTIME"
-echo "Date & Time  : $DATE"
+echo "---- System Identity Report ----"
+echo "Linux Distribution: $distro"
+echo "Kernel Version: $kernel"
+echo "Current User: $user"
+echo "Home Directory: $home_dir"
+echo "System Uptime: $uptime_info"
+echo "Current Date & Time: $current_time"
 
 echo ""
-echo "This system is based on open-source principles (GPL License)."
+echo "Note: Python is open-source software and distributed under the PSF License."
