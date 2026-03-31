@@ -1,18 +1,16 @@
 #!/bin/bash
-
-# Name: Ravi Kumar Gupta
-# Registration Number: 24BCE11274
 # Script 3: Disk and Permission Auditor
+# Reg No: 24BCE11274
 
-echo ""
-echo "---- Disk and Permission Auditor ----"
-echo ""
-
-# Directories to check
 DIRS=("/etc" "/var/log" "/home" "/usr/bin" "/tmp")
 
-for DIR in "${DIRS[@]}"; do
-    if [ -d "$DIR" ]; then
+echo "Directory Audit Report"
+echo "--------------------------------"
+
+for DIR in "${DIRS[@]}"
+do
+    if [ -d "$DIR" ]
+    then
         PERMS=$(ls -ld $DIR | awk '{print $1, $3, $4}')
         SIZE=$(du -sh $DIR 2>/dev/null | cut -f1)
         echo "$DIR => Permissions: $PERMS | Size: $SIZE"
@@ -22,14 +20,11 @@ for DIR in "${DIRS[@]}"; do
 done
 
 echo ""
+echo "Checking Git config directory..."
 
-# ✅ REQUIRED: Python config directory check
-echo "[Python Config Directory Check]"
-if [ -d "/etc/python3" ]; then
-    ls -ld /etc/python3
+if [ -f "/etc/gitconfig" ]
+then
+    ls -l /etc/gitconfig
 else
-    echo "Config directory not found"
+    echo "Git config file not found."
 fi
-
-echo ""
-echo "---- End ----"
