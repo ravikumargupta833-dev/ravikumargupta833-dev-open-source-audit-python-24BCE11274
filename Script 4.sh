@@ -1,6 +1,6 @@
 #!/bin/bash
 # Script 4: Log File Analyzer
-
+# Name: Ravi Kumar Gupta
 # Reg No: 24BCE11274
 
 LOGFILE=$1
