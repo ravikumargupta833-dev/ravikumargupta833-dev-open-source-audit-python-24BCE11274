@@ -1,27 +1,25 @@
 #!/bin/bash
+# Script 5: Open Source Manifesto Generator
+# Reg No: 24BCE11274
 
-# Name: Ravi Kumar Gupta
-# Registration Number: 24BCE11274
-# Script 5: Open Source Manifest Generator
-
-echo "Answer a few questions..."
+echo "Answer a few questions to generate your manifesto"
 echo ""
 
-read -p "Which tool do you use daily? " TOOL
-read -p "What does freedom mean to you? " FREEDOM
-read -p "What do you want to build in future? " BUILD
+read -p "1. Tool you use daily: " TOOL
+read -p "2. What does freedom mean to you? " FREEDOM
+read -p "3. What would you build openly? " BUILD
 
 DATE=$(date '+%d %B %Y')
-OUTPUT="manifest_$(whoami).txt"
+OUTPUT="manifesto_24BCE11274.txt"
 
-# Generate manifesto
-echo "On $DATE, I reflected on open-source tools." > $OUTPUT
-echo "I regularly use $TOOL, which helps me in my daily work." >> $OUTPUT
-echo "For me, freedom means $FREEDOM." >> $OUTPUT
-echo "In future, I want to build $BUILD and share it openly." >> $OUTPUT
-echo "Open source connects learning, creativity, and collaboration." >> $OUTPUT
+echo "--------------------------------" > $OUTPUT
+echo "Open Source Manifesto" >> $OUTPUT
+echo "Date: $DATE" >> $OUTPUT
+echo "" >> $OUTPUT
+
+echo "I regularly use $TOOL in my daily work. For me, freedom means $FREEDOM." >> $OUTPUT
+echo "In the future, I would like to build $BUILD and share it openly so others can learn and improve it." >> $OUTPUT
 
 echo ""
-echo "Manifest saved to $OUTPUT"
-echo "------ Content ------"
+echo "Manifesto saved in $OUTPUT"
 cat $OUTPUT
