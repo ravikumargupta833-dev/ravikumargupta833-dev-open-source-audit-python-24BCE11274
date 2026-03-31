@@ -1,34 +1,26 @@
 #!/bin/bash
-# Script 2: FOSS Package Inspector
+
 # Name: Ravi Kumar Gupta
-# Reg No: 24BCE11274
+# Registration Number: 24BCE11274
+# Script: Python Package Inspector
 
-PACKAGE="git"
+echo "Checking Python installation..."
 
-echo "Checking package: $PACKAGE"
-echo "--------------------------------"
-
-if command -v git &> /dev/null
+if command -v python3 >/dev/null 2>&1
 then
-    echo "Git is installed on this system."
-    git --version
+    version=$(python3 --version)
+    echo "Python is installed."
+    echo "Version: $version"
+
+    # Using case statement for simple description
+    case $version in
+        *3.*)
+            echo "This looks like a Python 3 version, which is widely used currently."
+            ;;
+        *)
+            echo "Some other version detected."
+            ;;
+    esac
 else
-    echo "Git is NOT installed."
+    echo "Python is not installed on this system."
 fi
-
-echo ""
-
-case $PACKAGE in
- git)
-  echo "Git: A distributed version control system that allows developers to track changes and collaborate freely."
-  ;;
- firefox)
-  echo "Firefox: A browser focused on privacy and open web standards."
-  ;;
- vlc)
-  echo "VLC: A powerful open-source media player."
-  ;;
- *)
-  echo "Unknown package."
-  ;;
-esac
