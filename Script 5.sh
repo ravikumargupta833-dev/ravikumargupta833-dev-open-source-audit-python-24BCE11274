@@ -1,5 +1,6 @@
 #!/bin/bash
 # Script 5: Open Source Manifesto Generator
+# Name: Ravi Kumar Gupta
 # Reg No: 24BCE11274
 
 echo "Answer a few questions to generate your manifesto"
