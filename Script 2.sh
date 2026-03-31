@@ -1,5 +1,6 @@
 #!/bin/bash
 # Script 2: FOSS Package Inspector
+# Name: Ravi Kumar Gupta
 # Reg No: 24BCE11274
 
 PACKAGE="git"
