@@ -1,49 +1,30 @@
 #!/bin/bash
-
-# Name: Ravi Kumar Gupta
-# Registration Number: 24BCE11274
 # Script 1: System Identity Report
+# Name: Ravi Kumar Gupta
+# Reg No: 24BCE11274
 
-echo ""
-echo "---- System Identity Report ----"
-echo ""
+STUDENT_NAME="Ravi Kumar Gupta"
+REG_NO="24BCE11274"
+SOFTWARE="Git"
 
-# Linux distribution
-DISTRO=$(lsb_release -d | awk -F'\t' '{print $2}')
-echo "Linux Distribution : $DISTRO"
-
-# Kernel version
 KERNEL=$(uname -r)
-echo "Kernel Version     : $KERNEL"
-
-# Current user
-USER=$(whoami)
-echo "Logged in User     : $USER"
-
-# Uptime
+USER_NAME=$(whoami)
 UPTIME=$(uptime -p)
-echo "System Uptime      : $UPTIME"
+DATE=$(date)
+DISTRO=$(cat /etc/os-release | grep PRETTY_NAME | cut -d= -f2 | tr -d '"')
 
-# Hostname
-HOSTNAME=$(hostname)
-echo "Hostname           : $HOSTNAME"
+echo "========================================"
+echo " Open Source Audit"
+echo " Name: $STUDENT_NAME"
+echo " Reg No: $REG_NO"
+echo "========================================"
 
-# Python version
-PYVER=$(python3 --version 2>&1)
-echo "Python Version     : $PYVER"
-
-# Python path
-PYPATH=$(which python3)
-echo "Python Path        : $PYPATH"
-
-# CPU
-CPU=$(lscpu | grep 'Model name' | awk -F':' '{print $2}' | xargs)
-echo "CPU                : $CPU"
-
-# RAM
-RAM=$(free -h | awk '/^Mem:/ {print $2}')
-echo "Total RAM          : $RAM"
+echo "Distribution : $DISTRO"
+echo "Kernel       : $KERNEL"
+echo "User         : $USER_NAME"
+echo "Home Dir     : $HOME"
+echo "Uptime       : $UPTIME"
+echo "Date & Time  : $DATE"
 
 echo ""
-echo "---- End of Report ----"
-echo ""
+echo "This system is based on open-source principles (GPL License)."
