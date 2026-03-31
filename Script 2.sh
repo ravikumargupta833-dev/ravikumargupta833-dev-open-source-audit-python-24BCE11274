@@ -1,49 +1,33 @@
 #!/bin/bash
+# Script 2: FOSS Package Inspector
+# Reg No: 24BCE11274
 
-# Name: Ravi Kumar Gupta
-# Registration Number: 24BCE11274
-# Script 2: Python Package Inspector
+PACKAGE="git"
 
-echo ""
-echo "---- Python Package Inspector ----"
-echo ""
+echo "Checking package: $PACKAGE"
+echo "--------------------------------"
 
-# Check Python installation
-if command -v python3 >/dev/null 2>&1; then
-    echo "[Python Installed]"
-    python3 --version
-    echo "Location: $(which python3)"
-    echo "License: PSF License (Open Source)"
+if command -v git &> /dev/null
+then
+    echo "Git is installed on this system."
+    git --version
 else
-    echo "Python is NOT installed."
-    exit 1
+    echo "Git is NOT installed."
 fi
 
 echo ""
 
-# Count installed packages
-TOTAL=$(pip3 list 2>/dev/null | tail -n +3 | wc -l)
-echo "Total Installed Packages: $TOTAL"
-
-echo ""
-
-# Outdated packages
-echo "[Outdated Packages]"
-pip3 list --outdated 2>/dev/null | head -10
-
-echo ""
-
-# Framework detection
-echo "[Framework Detection]"
-for pkg in django flask numpy pandas tensorflow pytorch requests sqlalchemy; do
-    if pip3 show $pkg &>/dev/null; then
-        VERSION=$(pip3 show $pkg | grep Version | awk '{print $2}')
-        echo "[FOUND] $pkg == $VERSION"
-    else
-        echo "[NOT INSTALLED] $pkg"
-    fi
-done
-
-echo ""
-echo "---- End ----"
-echo ""
+case $PACKAGE in
+ git)
+  echo "Git: A distributed version control system that allows developers to track changes and collaborate freely."
+  ;;
+ firefox)
+  echo "Firefox: A browser focused on privacy and open web standards."
+  ;;
+ vlc)
+  echo "VLC: A powerful open-source media player."
+  ;;
+ *)
+  echo "Unknown package."
+  ;;
+esac
